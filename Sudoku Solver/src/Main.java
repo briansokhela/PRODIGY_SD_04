@@ -61,10 +61,24 @@ public class Main extends Application {
                 textField.setPrefWidth(40);
                 textField.setPrefHeight(40);
                 textField.setStyle("-fx-font-size: 18; -fx-alignment: center;");
+
+                // Apply thicker borders to differentiate 3x3 sub-grids
+                if (row % 3 == 0) {
+                    textField.setStyle(textField.getStyle() + "-fx-border-width: 2px 0 0 0; -fx-border-color: black;");
+                } 
+                if (col % 3 == 0) {
+                    textField.setStyle(textField.getStyle() + "-fx-border-width: 0 0 0 2px; -fx-border-color: black;");
+                }
+                
+                if (row % 3 == 0 && col % 3 == 0) {
+                   textField.setStyle(textField.getStyle() + "-fx-border-width: 2px 0 0 2px; -fx-border-color: black;");
+                }
+
                 grid[row][col] = textField;
                 gridPane.add(textField, col + 1, row + 1);
             }
         }
+
         return gridPane;
     }
 
